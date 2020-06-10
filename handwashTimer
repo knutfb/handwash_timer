@@ -1,0 +1,61 @@
+
+const int a = 440;
+const int eH = 659;
+
+const int buttonPin = 12;
+const int buzzerPin = 8;
+const int ledPin = 9;
+int buttonState = 0;
+
+void setup()
+{
+ //Setup pin modes
+ pinMode(ledPin, OUTPUT);
+ pinMode(buzzerPin, OUTPUT);
+ pinMode(buttonPin, INPUT);
+}
+
+void loop(){
+
+
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == HIGH) {
+    analogWrite(ledPin, HIGH);
+
+    delay(20000);
+    toneValues();
+    //delay(100);
+  }
+
+}
+
+void beep(int note, int duration)
+{
+ tone(buzzerPin, note, duration);
+ delay(duration);
+
+ noTone(buzzerPin);
+
+}
+
+void toneValues()
+{
+ beep(a, 500);
+ delay(500);
+
+ beep(eH, 500);
+ delay(500);
+
+ beep(a, 500);
+ delay(500);
+
+ beep(eH, 500);
+ delay(500);
+
+ beep(a, 500);
+ delay(500);
+
+ beep(eH, 500);
+ delay(500);
+}
